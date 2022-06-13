@@ -1,6 +1,6 @@
 # plex-watcher
 A bot discord to know who watches plex
-
+_
 ## .env
 ```
 TOKEN = discord_bot_token

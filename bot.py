@@ -19,7 +19,7 @@ async def on_ready():
 
 def watcher():
     count = 0
-    embed=discord.Embed(title="Plex watcher", url="https://app.plex.tv/desktop/#!/", description="Who look plex?")
+    embed=discord.Embed(title="Plex watcher", url="https://app.plex.tv/desktop/#!/", description="who watches plex?")
     embed.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Plex_logo_2022.svg/800px-Plex_logo_2022.svg.png?20220502185220")
     if plex.sessions():
         for session in plex.sessions():
