@@ -1,2 +1,2 @@
 # plex-watcher
-A bot discord to know who watches pelx
+A bot discord to know who watches plex
