@@ -30,18 +30,18 @@ def watcher():
             for player in session.players:
                 status = player.state
             if status == 'playing':
-                embed.add_field(name=username, value=f':arrow_forward: {title}', inline=False)
+                embed.add_field(name=username, value=f":arrow_forward: {title}", inline=False)
             elif status == 'paused':
-                embed.add_field(name=username, value=f':pause_button: {title}', inline=False)
+                embed.add_field(name=username, value=f":pause_button: {title}", inline=False)
         if count == 1:
-            embed.set_footer(text=f"places available: 1")
+            embed.set_footer(text="places available: 1")
         elif count >= 2:
-            embed.set_footer(text=f"places available: 0")
+            embed.set_footer(text="places available: 0")
     else:
         embed.set_footer(text="places available: 2")
     return embed
        
-@tasks.loop(seconds=1200)
+@tasks.loop(seconds=os.getenv(int('TIME')))
 async def sender():
     print("watch...")
     channel = bot.get_channel(int(os.getenv('DISCORD_CHAN')))
