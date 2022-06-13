@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv() # load all the variables from the env file
-bot = discord.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="!")
 
 account = MyPlexAccount(os.getenv('PLEX_USER'), os.getenv('PLEX_PASS'))
 plex = account.resources()[0].connect() # returns a PlexServer instance
