@@ -41,7 +41,7 @@ def watcher():
         embed.set_footer(text="places available: 2")
     return embed
        
-@tasks.loop(seconds=os.getenv(int('TIME')))
+@tasks.loop(seconds=int(os.getenv('TIME')))
 async def sender():
     print("watch...")
     channel = bot.get_channel(int(os.getenv('DISCORD_CHAN')))
