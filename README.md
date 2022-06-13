@@ -1,5 +1,5 @@
 # plex-watcher
-A bot discord to know who watches plex
+A bot discord to know who watches plex and send message to a specific channel
 
 ## .env
 ```
