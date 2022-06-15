@@ -34,9 +34,9 @@ def watcher():
             elif status == 'paused':
                 embed.add_field(name=username, value=f":pause_button: {title}", inline=False)
         if count == 1:
-            embed.set_footer(text="places available: 1")
+            embed.set_footer(text="place available: 1")
         elif count >= 2:
-            embed.set_footer(text="places available: 0")
+            embed.set_footer(text="place available: 0")
     else:
         embed.set_footer(text="places available: 2")
     return embed
