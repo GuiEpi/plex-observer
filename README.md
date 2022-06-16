@@ -1,4 +1,4 @@
-# plex-watcher
+# plex-observer
 A bot discord to know who watches plex
 
 ## .env
