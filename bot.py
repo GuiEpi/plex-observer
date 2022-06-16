@@ -8,7 +8,7 @@ from Watcher import Watcher
 import discord
 import os 
 
-load_dotenv() # load all the variables from the env file
+load_dotenv() 
 
 try:
     account = MyPlexAccount(os.getenv('PLEX_USER'), os.getenv('PLEX_PASS'))
@@ -41,32 +41,32 @@ async def sender():
         await channel.send(embed=resp)
     elif type(resp) is list:
         for user in resp:
-            await channel.send(f"{user} disconnected.")
+            embed = embed_maker(desc="A user has logged out!")
+            embed.add_field(name="[INFO]", value=f":stop_button: {user} disconnected.", inline=False)
+            embed_footer_maker(embed)
+            await channel.send(embed=embed)
 
-def plex_observer() -> discord.embeds.Embed or list:
+def plex_observer() -> discord.Embed or list:
     users = []
     if plex.sessions():
         for session in plex.sessions():
             username = session.usernames[0]
             users.append(username)
-            title = session.grandparentTitle
-            sub_title = session.title
+            if session.type == "movie":
+                title = session.title
+            else:
+                title = session.grandparentTitle
             for player in session.players:
                 status = player.state
             if username not in session_.watchers.keys():
-                embed=discord.Embed(title="Plex observer", url="https://app.plex.tv/desktop/#!/", description="who watche(s) plex?")
-                embed.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Plex_logo_2022.svg/800px-Plex_logo_2022.svg.png?20220502185220")
                 session_.add(Watcher.create(username, title, status))
+                embed = embed_maker(desc='A user has logged in!')
                 for key in session_.watchers.keys():
                     if status == 'playing':
                         embed.add_field(name=session_.watchers[key].name, value=f":arrow_forward: {session_.watchers[key].title}", inline=False)
                     elif status == 'paused':
                         embed.add_field(name=session_.watchers[key].name, value=f":pause_button: {session_.watchers[key].title}", inline=False)
-                place = place_available(len(users))
-                if place == -1:
-                    embed.set_footer(text="a user must log out")
-                else:
-                    embed.set_footer(text=f"place(s) available: {place}")
+                embed_footer_maker(embed)
                 return embed
     disconnected_user = []
     for account in accounts:
@@ -76,14 +76,15 @@ def plex_observer() -> discord.embeds.Embed or list:
                 disconnected_user.append(account)
     return disconnected_user
     
-def place_available(count: int) -> int:
-    if count == 0:
-        return 2
-    elif count == 1:
-        return 1
-    elif count == 2:
-        return 0
-    elif count > 2:
-        return -1
+def embed_maker(desc: str) -> discord.Embed:
+    embed=discord.Embed(title="Plex observer :eyes:", url="https://app.plex.tv/desktop/#!/", description=desc)
+    embed.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Plex_logo_2022.svg/800px-Plex_logo_2022.svg.png?20220502185220")
+    return embed
+
+def embed_footer_maker(embed) -> discord.Embed:
+    if session_.places == -1:
+        embed.set_footer(text="a user must log out")
+    else:
+        embed.set_footer(text=f"place(s) available: {session_.places}")
 
 bot.run(os.getenv('TOKEN')) 
