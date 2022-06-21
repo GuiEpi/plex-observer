@@ -13,3 +13,11 @@ class Session:
     def delete(self, watcher):
         del self.watchers[watcher]
         self.places += 1
+    
+    def watch_disconnected_users(self, users):
+        disconnected_user = []
+        for watcher in self.watchers.keys():
+            if watcher not in users:
+                disconnected_user.append(watcher)
+                self.delete(watcher)
+            return disconnected_user
