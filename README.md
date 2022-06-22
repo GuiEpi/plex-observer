@@ -27,4 +27,4 @@ docker build -t plex-observer .
 ```
 docker run -d plex-observer
 ```
-> Running the bot with -d flag runs the container in detached mode (it runs in the background).
+> Running the bot with -d flag runs the container in **detached mode** (it runs in the background).
