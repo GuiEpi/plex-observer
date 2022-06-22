@@ -4,7 +4,6 @@ Plex observer is a discord bot that sends a message to prevent connections/disco
 ```
 git clone https://github.com/GuiEpi/plex-observer.git
 ```
-
 ## .env
 ```
 TOKEN = discord_bot_token
