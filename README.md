@@ -16,11 +16,11 @@ cd ~/plex-observer
 ```
 2. Build the docker container for the plex observer.
 ```
-docker build -t discord-bot .
+docker build -t plex-observer .
 ```
 3. Run the docker container.
 
 ```
-docker run -d discord-bot
+docker run -d plex-observer
 ```
 > Running the bot with -d flag runs the container in detached mode (it runs in the background).
