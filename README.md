@@ -9,3 +9,18 @@ PLEX_PASS = plex_password
 DISCORD_CHAN = 012345678910 
 TIME = 1200 
 ```
+## deployment with docker
+1. Change to the plex observer project directory.
+```
+cd ~/plex-observer
+```
+2. Build the docker container for the plex observer.
+```
+docker build -t discord-bot .
+```
+3. Run the docker container.
+
+```
+docker run -d discord-bot
+```
+> Running the bot with -d flag runs the container in detached mode (it runs in the background).
