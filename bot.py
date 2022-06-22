@@ -30,14 +30,14 @@ async def on_ready():
 async def sender():
     channel = bot.get_channel(int(os.getenv('DISCORD_CHAN')))
     watchers = []
-    connexion = connexion_observer(watchers)
+    connexion = connection_observer(watchers)
     if connexion:
         await channel.send(embed=connexion)
-    deconnection = deconnection_observer(watchers)
+    deconnection = disconnection_observer(watchers)
     if deconnection:
         await channel.send(embed=deconnection)
 
-def connexion_observer(watchers: list) -> discord.Embed:
+def connection_observer(watchers: list) -> discord.Embed:
     count = 0
     if plex.sessions():
         embed = embed_maker(desc='A user has logged in!')
@@ -61,7 +61,7 @@ def connexion_observer(watchers: list) -> discord.Embed:
             embed_footer_maker(embed)
             return embed
 
-def deconnection_observer(watchers: list) -> discord.Embed:
+def disconnection_observer(watchers: list) -> discord.Embed:
     disconnected_users = session_.watch_disconnected_users(watchers)
     if disconnected_users:
         embed = embed_maker(desc="A user has logged out!")

@@ -1,5 +1,5 @@
 # plex-observer
-A bot discord to know who watches plex
+Plex observer is a discord bot that sends a message to prevent connections/disconnections in a specific channel.
 
 ## .env
 ```
