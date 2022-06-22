@@ -1,8 +1,6 @@
 class Watcher:
     @classmethod
-    def create(cls, name, title, status):
+    def create(cls, name):
         self = Watcher()
         self.name = name
-        self.title = title
-        self.status = status
         return self

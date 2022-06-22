@@ -38,7 +38,9 @@ async def sender():
         await channel.send(embed=deconnection)
 
 def connexion_observer(watchers: list) -> discord.Embed:
+    count = 0
     if plex.sessions():
+        embed = embed_maker(desc='A user has logged in!')
         for session in plex.sessions():
             username = session.usernames[0]
             watchers.append(username)
@@ -49,22 +51,23 @@ def connexion_observer(watchers: list) -> discord.Embed:
             for player in session.players:
                 status = player.state
             if username not in session_.watchers.keys():
-                session_.add(Watcher.create(username, title, status))
-                embed = embed_maker(desc='A user has logged in!')
+                count += 1
+                session_.add(Watcher.create(username))
                 if status == 'playing':
                     embed.add_field(name=username, value=f":arrow_forward: {title}", inline=False)
                 elif status == 'paused':
                     embed.add_field(name=username, value=f":pause_button: {title}", inline=False)
-                embed_footer_maker(embed)
-                return embed
+        if count > 0:
+            embed_footer_maker(embed)
+            return embed
 
 def deconnection_observer(watchers: list) -> discord.Embed:
     disconnected_users = session_.watch_disconnected_users(watchers)
     if disconnected_users:
+        embed = embed_maker(desc="A user has logged out!")
         for user in disconnected_users:
-            embed = embed_maker(desc="A user has logged out!")
             embed.add_field(name="[INFO]", value=f":stop_button: {user} disconnected.", inline=False)
-            embed_footer_maker(embed)
+        embed_footer_maker(embed)
         return embed
     
 def embed_maker(desc: str) -> discord.Embed:
