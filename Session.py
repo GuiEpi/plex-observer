@@ -10,7 +10,7 @@ class Session:
         self.watchers[watcher.name] = watcher
         self.places -= 1
     
-    def delete(self, watcher):
+    def __delete(self, watcher):
         del self.watchers[watcher]
         self.places += 1
     
@@ -19,5 +19,5 @@ class Session:
         for watcher in self.watchers.keys():
             if watcher not in users:
                 disconnected_user.append(watcher)
-                self.delete(watcher)
+                self.__delete(watcher)
             return disconnected_user
