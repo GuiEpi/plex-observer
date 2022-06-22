@@ -12,6 +12,7 @@ PLEX_PASS = plex_password
 DISCORD_CHAN = 012345678910 
 TIME = 1200 
 ```
+> time in **seconds**
 ## deployment with docker
 1. Change to the plex observer project directory.
 ```
