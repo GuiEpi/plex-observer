@@ -1,5 +1,0 @@
-.env
-docker-compose.yml
-Dockerfile
-/old
-/__pycache__
