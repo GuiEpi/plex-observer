@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "plex-observer"
+version = "0.1.0"
+description = ""
+authors = ["GuiEpi <guillaume.coussot@epitech.eu>"]
+readme = "README.md"
+packages = [{include = "plex_observer"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+plexapi = "^4.13.4"
+py-cord = "^2.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
