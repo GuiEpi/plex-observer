@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "plex-observer"
-version = "0.1.1"
+version = "0.1.2"
 description = "Plex Observer is a Discord bot that monitors a Plex server and updates the bot's status based on the number of available slots on the server."
 authors = ["GuiEpi <guillaume.coussot@epitech.eu>"]
 readme = "README.md"
