@@ -1,4 +1,4 @@
-![Project Image](https://raw.githubusercontent.com/GuiEpi/plex-observer/master/assets/mtcc_nfo_builder.png)
+![Project Image](https://raw.githubusercontent.com/GuiEpi/plex-observer/master/assets/plex_observer.png)
 
 # Plex Observer
 
