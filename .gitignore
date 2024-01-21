@@ -136,7 +136,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Config file
+# config.ini file
 config.ini
 
 # Database
